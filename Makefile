@@ -6,11 +6,11 @@
 #    By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/11 19:54:35 by yogun             #+#    #+#              #
-#    Updated: 2022/12/11 20:17:28 by yogun            ###   ########.fr        #
+#    Updated: 2022/12/12 14:56:12 by yogun            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = cube3D
+NAME = cub3D
 
 LIBFTDIR = ./libft
 
@@ -22,7 +22,12 @@ RM = rm -f
 
 FLAGS = -Wall -Wextra -Werror
 
-SRC =	cube3d.c
+SRC =	cub3d.c \
+		error_print.c \
+		is_map_format_ok.c \
+		parse_map.c \
+		parse_map_utils.c \
+		
 
 OBJ = ${SRC:.c=.o}
 
@@ -30,7 +35,7 @@ INCLIBFT = -L./libft -lft
 INMLX = -L./mlx -lmlx
 
 .c.o:
-	${CC} ${FLAGS}  -c $< -o ${<:.c=.o}
+	${CC} ${FLAGS} -c $< -o ${<:.c=.o}
 
 ${NAME}: ${OBJ}
 	@make -C $(LIBFTDIR)

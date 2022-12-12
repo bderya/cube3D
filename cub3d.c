@@ -1,51 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube3d.c                                           :+:      :+:    :+:   */
+/*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 20:13:53 by yogun             #+#    #+#             */
-/*   Updated: 2022/12/11 20:13:54 by yogun            ###   ########.fr       */
+/*   Updated: 2022/12/11 22:03:17 by yogun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
-#include "cube3d.h"
-
-int	is_map_format_ok(char *str, char *str2)
-{
-	int	counter;
-
-	counter = 0;
-	while (ft_strlen(str) != 4 && str)
-		str++;
-	if (!str || *str == '\0')
-		return (0);
-	while (str[counter])
-	{
-		if (str[counter] != str2[counter])
-			return (0);
-		counter+=1;
-	}
-	return (1);
-}
-
-void	error_print(char *s)
-{
-	write(2, "Error\n", 6);
-	ft_putstr_fd(s, 2);
-	exit(1);
-}
+#include "cub3d.h"
 
 int main(int argc, char *argv[]) {
+	t_dB	data;
 
 	if (argc == 2)
 	{
 		if (!is_map_format_ok(argv[1], ".cub"))
 			error_print("Wrong map format!\n");
-		//parse_map();
+		parse_map(&data, argv[1]);
 		//play_game();
 	}
 	else
