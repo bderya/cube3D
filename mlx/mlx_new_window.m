@@ -107,7 +107,7 @@ int get_mouse_button(NSEventType eventtype)
 - (void) flagsChanged:(NSEvent *)theEvent
 {
   unsigned int flag;
-  int the_key;
+  int thkey_e;
   unsigned int val;
 
   flag = [theEvent modifierFlags];
@@ -116,13 +116,13 @@ int get_mouse_button(NSEventType eventtype)
 
   if (!(val = (keyflag|flag)&(~(keyflag&flag))))
     return ;   // no change - can happen when loosing focus on special key pressed, then re-pressed later
-  the_key = 1;
-  while (((val >> (the_key-1)) & 0x01)==0)
-    the_key ++;
+  thkey_e = 1;
+  while (((val >> (thkey_e-1)) & 0x01)==0)
+    thkey_e ++;
   if (flag > keyflag && event_funct[2] != NULL)
-    event_funct[2](0xFF+the_key, event_param[2]);
+    event_funct[2](0xFF+thkey_e, event_param[2]);
   if (flag < keyflag && event_funct[3] != NULL)
-    event_funct[3](0xFF+the_key, event_param[3]);
+    event_funct[3](0xFF+thkey_e, event_param[3]);
   /*
   if (event_funct[2] != NULL)
     {

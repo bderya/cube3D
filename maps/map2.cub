@@ -1,22 +1,11 @@
 NO textures/greystone.xpm
-SO textures/colorstone.xpm
+EA textures/greystone.xpm
 WE textures/greystone.xpm
-EA textures/colorstone.xpm
+SO textures/greystone.xpm
 
-C 135,245,251
-F 117,142,79
+F 220,100,0
+C 225,30,0
 
-1111111111     111
-1000000001     101
-1111000001     111
-1000000001
-100N001001
-1010000011
-100000000111111111
-111111100000000001
-      100000111001
-      100000001001
-      100011111001
-      100001100001
-      100001000001
-      111111111111
+11111
+1E001
+11111
