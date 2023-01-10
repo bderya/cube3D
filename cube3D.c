@@ -3,103 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bderya <bderya@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/11 20:13:53 by yogun             #+#    #+#             */
-/*   Updated: 2022/12/11 23:43:54 by bderya           ###   ########.fr       */
+/*   Created: 2023/01/06 15:43:11 by yogun             #+#    #+#             */
+/*   Updated: 2023/01/08 19:50:52 by yogun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-int	is_map_format_ok(char *str, char *str2)
+/*
+	This function works only if we have 2 arguments. It checks if the format of
+	the map is correct. If it is, it calls ft_map_process to process the map.
+	Then it calls game_start to start the game.
+
+	If we have more than 2 arguments, it prints an error message.
+*/
+int	main(int argc, char **argv)
 {
-	int	counter;
-
-	counter = 0;
-	while (ft_strlen(str) != 4 && str)
-		str++;
-	if (!str || *str == '\0')
-		return (0);
-	while (str[counter])
-	{
-		if (str[counter] != str2[counter])
-			return (0);
-		counter+=1;
-	}
-	return (1);
-}
-
-void	error_print(char *s)
-{
-	write(2, "Error\n", 6);
-	ft_putstr_fd(s, 2);
-	exit(1);
-}
-
-int main(int argc, char *argv[]) {
+	t_dB	db;
 
 	if (argc == 2)
 	{
-		if (!is_map_format_ok(argv[1], ".cub"))
-			error_print("Wrong map format!\n");
-		//parse_map();
-		//play_game();
+		ft_initdata(&db);
+		if (!ft_check_map_format(argv[1], ".cub"))
+			ft_error("Map format is invalid!\n", &db);
+		ft_map_process(&db, argv[1]);
+		//after gym
+		ft_game_render(&db);
+		//system("leaks cub3D");
 	}
 	else
-		ft_putstr_fd("Error!\nInvalid input!\n", 2);
+		ft_putstr_fd("Error!\nProgram accept only one argument!\n", 2);
 	return (1);
-
-//   void *mlx = mlx_init();
-//   void *window = mlx_new_window(mlx, WIDTH, HEIGHT, "Wolfenstein 3D");
-//   int *map = argv[1]; // Assumes that the map array is passed as the first argument
-
-//   Player player = {0, 0, 0, 60}; // Initialize the player at the origin facing right
-
-//   while (1) {
-//     // Handle keyboard input
-//     int key = mlx_get_key(mlx, window);
-//     if (key == 'w') {
-//       player.x += cos(player.direction) * 0.1;
-//       player.y += sin(player.direction) * 0.1;
-//     } else if (key == 's') {
-//       player.x -= cos(player.direction) * 0.1;
-//       player.y -= sin(player.direction) * 0.1;
-//     } else if (key == 'a') {
-//       player.direction -= 0.1;
-//     } else if (key == 'd') {
-//       player.direction += 0.1;
-//     }
-
-//     // Handle mouse input
-//     int mouse_x, mouse_y;
-//     mlx_get_mouse_pos(mlx, window, &mouse_x, &mouse_y);
-//     player.direction = (mouse_x / (double)WIDTH) * player.fov - (player.fov / 2);
-
-//     // Clear the screen
-//     mlx_clear_window(mlx, window);
-
-//     // Draw the live map view
-//     mlx_string_put(mlx, window, 10, 10, 0xffffff, "Live map view");
-
-//     // Cast rays to find the distance to walls
-//     for (int x = 0; x < WIDTH; x++) {
-//       // Calculate the angle of the ray
-//       double angle = player.direction - player.fov / 2 + (x / (double)WIDTH) * player.fov;
-
-//       // Find the distance to the wall in the direction of the ray
-//       double distance = 0;
-//       while (map[(int)player.x + distance * cos(angle)][(int)player.y + distance * sin(angle)] == 0) {
-//         distance += 0.01;
-//       }
-
-//       // Draw a vertical line representing the wall
-//       int line_height = (HEIGHT / distance) * 3;
-//       mlx_line(mlx, window, x, HEIGHT / 2 - line_height / 2, x, HEIGHT / 2 + line_height / 2, 0xffffff);
-//     }
-
-//     // Update the screen
-//     mlx_loop(mlx);
-
-  //return 1;
 }

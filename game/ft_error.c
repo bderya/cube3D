@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_map_format_ok.c                                 :+:      :+:    :+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/11 21:51:44 by yogun             #+#    #+#             */
-/*   Updated: 2022/12/11 21:52:27 by yogun            ###   ########.fr       */
+/*   Created: 2023/01/06 16:13:19 by yogun             #+#    #+#             */
+/*   Updated: 2023/01/06 16:13:45 by yogun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cube3d.h"
 
-int	is_map_format_ok(char *str, char *str2)
+/*
+	This function prints an error message and exits the program,
+	freeing(with ft_free function) all the allocated memory and 
+	also printing "Error" to the standard error output.
+*/
+void	ft_error(char *str, t_dB *db)
 {
-	int	counter;
-
-	counter = 0;
-	while (ft_strlen(str) != 4 && str)
-		str++;
-	if (!str || *str == '\0')
-		return (0);
-	while (str[counter])
-	{
-		if (str[counter] != str2[counter])
-			return (0);
-		counter+=1;
-	}
-	return (1);
+	ft_free(db);
+	write(2, "Error\n", 6);
+	ft_putstr_fd(str, 2);
+	exit(EXIT_FAILURE);
 }
