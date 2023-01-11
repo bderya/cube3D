@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys_rotate.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: bderya <bderya@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 14:28:15 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/09 21:21:36 by yogun            ###   ########.fr       */
+/*   Updated: 2023/01/11 13:54:30 by bderya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	left_key(t_dB *a)
 	a->pdx = cos(ft_degree_to_radian(a->pa));
 	a->pdy = -1 * sin(ft_degree_to_radian(a->pa));
 }
+
 /*
 	Door open and close function.
 */
@@ -45,7 +46,6 @@ void	key_e(t_dB *db)
 	my = db->py + (db->pdy * 0.5);
 	if (get_map_char(mx, my, db) == 'D' && db->is_key == '1')
 	{
-		
 		// if (db->is_open == '1')
 		// {
 		// 	put_map_char(db->d_x, db->d_y, db, 'D');

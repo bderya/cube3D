@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   math_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: bderya <bderya@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 08:35:00 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/10 16:27:25 by yogun            ###   ########.fr       */
+/*   Updated: 2023/01/11 13:57:02 by bderya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ double	angle_to_360(double degree)
 */
 double	calculate_distance(t_ray *ray)
 {
-	double x;
+	double	x;
 
 	x = cos(ft_degree_to_radian(ray->ra)) * (ray->rx - ray->px)
 		- sin(ft_degree_to_radian(ray->ra)) * (ray->ry - ray->py);
-	return x;
+	return (x);
 }

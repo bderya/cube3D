@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_update.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: bderya <bderya@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 11:23:10 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/09 11:24:11 by yogun            ###   ########.fr       */
+/*   Updated: 2023/01/11 13:56:29 by bderya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ char	get_map_char(int mx, int my, t_dB *db)
 {
 	t_list	*map;
 	char	*s;
+
 	if (mx < 0 || my < 0 || mx >= db->map_width || my >= db->map_height)
 		return (' ');
 	map = db->map;

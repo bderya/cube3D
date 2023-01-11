@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sprite.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: bderya <bderya@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 22:02:10 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/10 17:29:36 by yogun            ###   ########.fr       */
+/*   Updated: 2023/01/11 14:24:32 by bderya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	init_sprite(t_dB *db)
 	spr.y = db->sx * spr.cos - db->sy * spr.sin;
 	db->b = spr.y;
 	//printf("sprx: %f, spry: %f\n", spr.x,spr.y);
-	db->sx = spr.x * 800 / spr.y + (WIDTH / 2); 
+	db->sx = spr.x * 800 / spr.y + (WIDTH / 2);
 	db->sy = spr.z * 800 / spr.y + (HEIGHT / 2);
 	db->spr_scale = 5 * HEIGHT / db->b;
 	if (db->spr_scale < 0)

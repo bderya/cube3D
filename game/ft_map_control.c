@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_map_control.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: bderya <bderya@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 15:08:55 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/10 15:05:14 by yogun            ###   ########.fr       */
+/*   Updated: 2023/01/11 13:49:53 by bderya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,14 @@ void	algorithm_door_key(char *s1, char *s2, char *s3, t_dB *db)
 		|| s3[i + 1] == '\n' || !s3[i + 1])
 		ft_error("Invalid Map!\n", db);
 	if (s2[i] == '0' && s2[i + 1] == '1' && s2[i - 1] == '1'
-		&& s1[i] == '0' && s3[i] == '0' && (s1[i + 1] == '1' || s3[i + 1] == '1'))
+		&& s1[i] == '0' && s3[i] == '0' && (s1[i + 1] == '1'
+			|| s3[i + 1] == '1'))
 		s2[i] = 'D';
-	else if (db->is_key == '0' && s2[i] == '0' && s2[i - 1] == '0'
-		&& s2[i + 1] == '0' && s1[i - 1] == '0' && s1[i] == '0' && s1[i + 1] == '0'
-		&& s3[i] == '0' && s3[i + 1] == '0' && s3[i - 1] == '0')
+
+	else if (db->is_key == '0' && s2[i] == '0' && s2[i - 1] == '0' 
+			&& s2[i + 1] == '0' && s1[i - 1] == '0' && s1[i] == '0' 
+			&& s1[i + 1] == '0' && s3[i] == '0' && s3[i + 1] == '0' 
+			&& s3[i - 1] == '0')
 	{
 		db->is_key = '1';
 		s2[i] = 'K';
@@ -110,7 +113,7 @@ void	ft_map_control(t_list	*map, t_dB *db)
 	t_list	*tmp;
 	t_list	*tmp2;
 
-	tmp = map->nxt;
+	tmp = map->nxt; // nxt diye variable yok kontrol et
 	if (!tmp)
 		ft_error("Error! Map is invalid.\n", db);
 	tmp2 = tmp->nxt;

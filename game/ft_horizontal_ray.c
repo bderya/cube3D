@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_horizontal_ray.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: bderya <bderya@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 12:12:09 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/10 17:26:30 by yogun            ###   ########.fr       */
+/*   Updated: 2023/01/11 13:35:48 by bderya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_horizontal_dist_check(t_dB *db, t_ray *ray, char c)
 {
-	double	disth; // we use this variable to store 
+	double	disth;// we use this variable to store // Hya burada
 
 	disth = calculate_distance(ray);
 	if (disth < db->dist)
@@ -64,16 +64,16 @@ void	ft_horizontal_ray(t_dB *db, t_ray *ray)
 {
 	ray->atan_ra = 1.0 / tan(ft_degree_to_radian(ray->ra));
 	ray->depth = 0;
-	if (sin(ft_degree_to_radian(ray->ra)) > 0.0001) // we check if the Ray is facing up
+	if (sin(ft_degree_to_radian(ray->ra)) > 0.0001)// we check if the Ray is facing up
 	{
 		ray->zerosh = 2;
-		ray->ry = (((int)ray->py >> 6) << 6) - 0.0001; // we round the Ray's Y position to the nearest 64th value
+		ray->ry = (((int)ray->py >> 6) << 6) - 0.0001;// we round the Ray's Y position to the nearest 64th value
 		// we substract small amount for accuracy
 		ray->rx = (ray->py - ray->ry) * ray->atan_ra + ray->px;
 		ray->yo = -64;
 		ray->xo = 64 * ray->atan_ra;
 	}
-	else if (sin(ft_degree_to_radian(ray->ra)) < -0.0001) // or down
+	else if (sin(ft_degree_to_radian(ray->ra)) < -0.0001)// or down
 	{
 		ray->zerosh = 3;
 		ray->ry = (((int)ray->py >> 6) << 6) + 64;
@@ -81,7 +81,8 @@ void	ft_horizontal_ray(t_dB *db, t_ray *ray)
 		ray->yo = 64;
 		ray->xo = -64 * ray->atan_ra;
 	}
-	else if (sin(ft_degree_to_radian(ray->ra)) < 0.0001 && sin(ft_degree_to_radian(ray->ra)) > -0.0001) // or straight
+	else if (sin(ft_degree_to_radian(ray->ra)) < 0.0001 && \
+		sin(ft_degree_to_radian(ray->ra)) > -0.0001)// or straight //Comment error burasi tamamdir
 	{
 		ray->depth = db->map_height;
 		ray->rx = ray->px;
@@ -106,7 +107,8 @@ void	ft_ray_cast(t_dB *db, t_ray *ray)
 		db->dist = 1000000; 
 		ft_vertical_ray(db, ray);
 		ft_horizontal_ray(db, ray);
-		db->dist = db->dist * cos(ft_degree_to_radian(angle_to_360(db->pa - ray->ra))); // we use this to fix fisheye effect
+		db->dist = db->dist * cos(ft_degree_to_radian \ 
+			(angle_to_360(db->pa - ray->ra))); // we use this to fix fisheye effect
 		if (db->zeros > 3 && db->zeros != 6)
 			db->ray = (int)(ray->vy) % 64; // if we look right or left we take vertical ray's Y position
 		else

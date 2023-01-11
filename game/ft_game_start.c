@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_game_start.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: bderya <bderya@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 07:55:40 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/09 20:01:27 by yogun            ###   ########.fr       */
+/*   Updated: 2023/01/11 13:31:06 by bderya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@
 void	ft_map_render(t_dB *db)
 {
 	t_ray		ray;
-	//If there is an image, destroy it.
+	//If there is an image, destroy it. //Norm error
 	if (db->img)
 		mlx_destroy_image(db->mlx, db->img);
-	db->img = mlx_new_image(db->mlx, WIDTH, HEIGHT);	//Create a new image.
+	db->img = mlx_new_image(db->mlx, WIDTH, HEIGHT);//Create a new image.
 	//If the image couldn't be created, print an error message and exit the game.
 	if (!db->img)
 	{

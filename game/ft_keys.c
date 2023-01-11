@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_keys.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: bderya <bderya@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 20:58:05 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/10 17:46:09 by yogun            ###   ########.fr       */
+/*   Updated: 2023/01/11 13:37:21 by bderya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,8 @@ void	key_w(t_dB *db)
 	}
 }
 
-
 void	d_key(t_dB *db)
 {
-	
 	int		my;
 	int		mx;
 	char	val;
@@ -115,7 +113,6 @@ void	key_s(t_dB *db)
 */
 int	ft_key_hook(int keyboard, t_dB *db)
 {
-	
 	if (keyboard == 13)
 		key_w(db);
 	else if (keyboard == 0)

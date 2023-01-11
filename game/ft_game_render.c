@@ -3,28 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ft_game_render.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: bderya <bderya@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 08:09:48 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/09 15:58:11 by yogun            ###   ########.fr       */
+/*   Updated: 2023/01/11 13:29:45 by bderya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube3d.h"
 
 /*
-	mlx_get_data_addr returns information about the created image, allowing a user to modify it later.
-	mlx_get_data_addr returns a char * address that represents the begining of the memory area where the image is stored.
+	mlx_get_data_addr returns information about the created image, 
+	allowing a user to modify it later.
+	mlx_get_data_addr returns a char * address that represents the begining of
+	the memory area where the image is stored.
 
-	First input specifies the image to use. The three next parameters should be the addresses of three different valid integers.
-	Second input will be filled with the number of bits needed to represent a pixel color (also called the depth of the image).
-	Third input is the number of bytes used to store one line of the image in memory. This information is needed to move from one line to another in the image.
-	Fourth input tells you wether the pixel color in the image needs to be stored in little endian endian == 0, or big endian endian == 1.
+	First input specifies the image to use. 
+	The three next parameters should be the addresses of three different ->>
+	valid integers.
+	Second input will be filled with the number of bits needed to -> 
+	represent a pixel color (also called the depth of the image).
+	Third input is the number of bytes used to store one line of ->
+	the image in memory. 
+	This information is needed to move from one line to another in the image.
+	Fourth input tells you wether the pixel color in the image needs to be stored in
+	little endian endian == 0, or big endian endian == 1.
 	First two elements of the array is empty because 
 */
 void	ft_get_data_addr(t_dB *db)
 {
-	if (!(db->ea || db->so || db->we || db->no || db->key || db->door || db->key2))
+	if (!(db->ea || db->so || db->we || db->no || \
+		db->key || db->door || db->key2))
 	{
 		write(2, "Error! Image file could not found!\n", 35);
 		ft_lstfree(db->map);
@@ -48,7 +57,8 @@ void	ft_get_data_addr(t_dB *db)
 }
 
 /*
-	This function renders the wall, door and key images. mlx_xpm_file_to_image functions will create a new image.
+	This function renders the wall, door and key images. 
+	mlx_xpm_file_to_image functions will create a new image.
 */
 void	file_to_image(t_dB *db)
 {
@@ -123,13 +133,16 @@ void	ft_map_db_control(t_dB *db)
 	it also checks whether the data received from the map.
 	it calculates the angles of the player's position.
 
-	Hooking into events is one of the most powerful tools that MiniLibX provides. It allows you to register to any of the aforementioned events with the call of a simple hook registration function.
+	Hooking into events is one of the most powerful tools that MiniLibX provides. 
+	It allows you to register to any of the aforementioned events 
+	with the call of a simple hook registration function.
 
 	To achieve this, we call the function mlx_hook.
 	2: ON_KEYDOWN -> For key press moment
 	17: ON_DESTROY -> For window close moment little red button with cross
 	
-	To initiate a loop, we call the mlx_loop function with the mlx instance as only parameter
+	To initiate a loop, we call the mlx_loop function with 
+	the mlx instance as only parameter
 
 	The mlx_loop_hook is one hook that is triggered when there's no event processed 
 */
@@ -138,14 +151,14 @@ void	ft_game_render(t_dB *db)
 	ft_map_db_control(db);
 	db->pdx = cos(ft_degree_to_radian(db->pa));
 	db->pdy = -1 * sin(ft_degree_to_radian(db->pa));
-	//db->is_key = '1';
+	//db->is_key = '1'; Norm error yeri
 	if (db->is_key == '1')
 	{
 		db->sprite = '1';
 		db->is_key = '0';
 	}
-	// if (KEYS == '1')
-	// 	db->is_key = '1';
+	// if (KEYS == '1') normm error yeri
+	// 	db->is_key = '1'; norm error yeri
 	db->key_px += 0.5;
 	db->key_py += 0.5;
 	db->mlx = mlx_init();
@@ -154,7 +167,7 @@ void	ft_game_render(t_dB *db)
 	mlx_mouse_hide();
 	mlx_hook(db->win, 17, 0, ft_exit_game, db);
 	mlx_hook(db->win, 2, 0, ft_key_hook, db);
-	// I will continue to write after gym
+	// I will continue to write after gym, idk but am gonna fix bderya ..
 	mlx_loop_hook(db->mlx, ft_game_start, db);
 	mlx_loop(db->mlx);
 }
