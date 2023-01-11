@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube3d.c                                           :+:      :+:    :+:   */
+/*   cube3D.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: bderya <bderya@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 15:43:11 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/08 19:50:52 by yogun            ###   ########.fr       */
+/*   Updated: 2023/01/11 13:20:59 by bderya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int	main(int argc, char **argv)
 		if (!ft_check_map_format(argv[1], ".cub"))
 			ft_error("Map format is invalid!\n", &db);
 		ft_map_process(&db, argv[1]);
-		//after gym
+		//after gym norm error yeri.
 		ft_game_render(&db);
-		//system("leaks cub3D");
+		//system("leaks cub3D"); norm error yeri .
 	}
 	else
 		ft_putstr_fd("Error!\nProgram accept only one argument!\n", 2);
