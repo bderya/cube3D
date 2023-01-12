@@ -6,7 +6,7 @@
 #    By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/08 08:10:39 by yogun             #+#    #+#              #
-#    Updated: 2023/01/10 12:16:06 by yogun            ###   ########.fr        #
+#    Updated: 2023/01/12 15:07:17 by yogun            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ SRC =	cube3d.c \
 		game/ft_free.c \
 		game/ft_error.c \
 		game/ft_exit_game.c \
+		game/ft_start.c \
 
 OBJ = ${SRC:.c=.o}
 DEP = ${SRC:.c=.d}
