@@ -6,7 +6,7 @@
 #    By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/08 08:10:39 by yogun             #+#    #+#              #
-#    Updated: 2023/01/12 15:07:17 by yogun            ###   ########.fr        #
+#    Updated: 2023/01/15 11:17:52 by yogun            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ LIBFTDIR = ./libft
 
 MLXDIR = ./mlx
 
-CC = cc
+CC = gcc
 
 RM = rm -f
 
@@ -45,10 +45,11 @@ SRC =	cube3d.c \
 		game/ft_exit_game.c \
 		game/ft_start.c \
 
+INCLIBFT = -L./libft -lft
+INCMLX = -L./mlx -lmlx
+
 OBJ = ${SRC:.c=.o}
 DEP = ${SRC:.c=.d}
-INCLIBFT = -L./libft -lft
-INMLX = -L./mlx -lmlx
 
 .c.o:
 	${CC} ${FLAGS} -c $< -o ${<:.c=.o}
@@ -56,7 +57,7 @@ INMLX = -L./mlx -lmlx
 ${NAME}: ${OBJ}
 	@make -C $(LIBFTDIR)
 	@make -C $(MLXDIR)
-	${CC} ${OBJ} ${INCLIBFT} ${INMLX} -framework OpenGL -framework AppKit -o ${NAME}
+	${CC} ${OBJ} ${INCLIBFT} ${INCMLX} -framework OpenGL -framework AppKit -o ${NAME}
 
 all: ${NAME}
 

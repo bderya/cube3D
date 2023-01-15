@@ -6,7 +6,7 @@
 /*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:50:16 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/12 15:10:12 by yogun            ###   ########.fr       */
+/*   Updated: 2023/01/12 15:18:46 by yogun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,9 @@
 */
 int	main(int argc, char **argv)
 {
-	t_dB	db;
-
 	if (argc == 2)
 	{
-		ft_start(&db, argv[1]);
+		ft_start(argv[1]);
 	}
 	else
 		ft_putstr_fd("Error!\nProgram accept only one argument!\n", 2);

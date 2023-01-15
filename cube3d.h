@@ -6,7 +6,7 @@
 /*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 15:46:02 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/12 15:13:20 by yogun            ###   ########.fr       */
+/*   Updated: 2023/01/12 15:19:47 by yogun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,6 +185,6 @@ void	ft_timer(t_dB *db);
 int		ft_check_map_format(char *str, char *s2);
 void	ft_error(char *str, t_dB *db);
 void	ft_free(t_dB *db);
-void	ft_start(t_dB *db_init, char *argv);
+void	ft_start(char *argv);
 
 #endif
