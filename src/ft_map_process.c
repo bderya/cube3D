@@ -6,7 +6,7 @@
 /*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 15:26:42 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/15 14:22:32 by yogun            ###   ########.fr       */
+/*   Updated: 2023/01/15 18:47:34 by yogun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 /*
 	This function completes the map to the height of 10 if it is less than 10.
-	It fills the map with spaces until it is 10 rows.
+	It fills the map with spaces until it is 10 rows. This is done to make sure
+	that the map is not too small to be displayed. This function is used only
+	after the map is read and it is not complete to the height of 10.
 */
 void	fill_with_rows(t_dB *db)
 {

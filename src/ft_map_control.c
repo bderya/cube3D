@@ -3,17 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_map_control.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bderya <bderya@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 15:08:55 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/11 13:49:53 by bderya           ###   ########.fr       */
+/*   Updated: 2023/01/15 18:42:28 by yogun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube3d.h"
 
 /*
-	This function checks if the map is closed properly by walls.
+	This function checks if the map is closed properly by walls. This function 
+	is used to check first and last line of the map. So it should be a full wall
+	which is drawn by '1' character.
 */
 void	ft_wall_control(char *s, t_dB *db)
 {
@@ -77,7 +79,12 @@ void	algorithm_door_key(char *s1, char *s2, char *s3, t_dB *db)
 }
 
 /*
-	This function  positions the doors and keys in the map.
+	This function  is important. It positions the doors and keys in the map.
+	We count the number of zeros in the line of the map. We keep this value in
+	db->zeros variable. Then we call algorithm_door_key() function to check
+	if the pattern is correct or not. If it is correct, we assign the door
+	or key character to the map. If it is not correct, we call ft_error()
+	function to exit the program.
 */
 void	ft_check_maplines(char *s, char *s2, char *s3, t_dB *db)
 {
@@ -94,8 +101,7 @@ void	ft_check_maplines(char *s, char *s2, char *s3, t_dB *db)
 			i++;
 		if (s2[i] && s2[i] != '\n')
 		{
-			db->zeros = i; // zeros is the positions of 0's in the line of the map
-			//printf("zeros: %d\n", db->zeros);
+			db->zeros = i;
 			algorithm_door_key(s, s2, s3, db);
 			i++;
 		}
@@ -107,13 +113,26 @@ void	ft_check_maplines(char *s, char *s2, char *s3, t_dB *db)
 	With ft_check_maplines() function we also position the doors
 	and the keys in the map. Y position of the key is placed there
 	but X position is placed at the bottom of this function.
+
+	In first if condition we check whether the map is the first
+	line of the map. If it is, we call ft_wall_control() function
+	to check if the first line of the map is closed properly by
+	walls.
+	
+	After that, there is totally another if condition. This is
+	used to check if the map is the last line of the map. If it
+	is, we call ft_wall_control() function to check if the last
+	line of the map is closed properly by walls.
+
+	After that, we call ft_check_maplines() function to check if
+	the map is closed properly by walls in other rows.
 */
 void	ft_map_control(t_list	*map, t_dB *db)
 {
 	t_list	*tmp;
 	t_list	*tmp2;
 
-	tmp = map->nxt; // nxt diye variable yok kontrol et
+	tmp = map->nxt;
 	if (!tmp)
 		ft_error("Error! Map is invalid.\n", db);
 	tmp2 = tmp->nxt;
