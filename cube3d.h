@@ -6,7 +6,7 @@
 /*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 15:46:02 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/12 15:19:47 by yogun            ###   ########.fr       */
+/*   Updated: 2023/01/15 18:26:52 by yogun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # define WIDTH    1000
 # define KEYS     '0'
 
-# include "libft/libft.h"
+# include "./src/libft/libft.h"
 # include "mlx/mlx.h"
 # include <fcntl.h>
 # include <math.h>

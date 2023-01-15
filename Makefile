@@ -6,13 +6,13 @@
 #    By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/08 08:10:39 by yogun             #+#    #+#              #
-#    Updated: 2023/01/15 18:14:50 by yogun            ###   ########.fr        #
+#    Updated: 2023/01/15 18:25:49 by yogun            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 
-LIBFTDIR = ./libft
+LIBFTDIR = ./src/libft
 
 MLXDIR = ./mlx
 
@@ -56,7 +56,7 @@ SRC =	cube3d.c \
 		src/ft_start.c \
 ################################
 
-INCLIBFT = ./libft/libft.a 
+INCLIBFT = ./src/libft/libft.a 
 INCMLX = -L./mlx -lmlx
 
 OBJ = ${SRC:.c=.o}
