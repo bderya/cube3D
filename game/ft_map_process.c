@@ -6,7 +6,7 @@
 /*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 15:26:42 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/08 08:13:41 by yogun            ###   ########.fr       */
+/*   Updated: 2023/01/15 14:22:32 by yogun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,14 @@ void	complete_to_rect(t_list *map, t_dB *db)
 
 /*
 	This function is used to check if the map is valid and it 
-	gets the player position and direction.
+	gets the player position and direction. px and py are the
+	player position. player is the player direction. py is
+	player position in y axis. px is player position in x axis.
+	map_height is being updated everytime line is read. But this
+	function is not invoked after player has been found. This is why, 
+	py is being updated after everyline has been read but last time 
+	when player is found. We add 0.5 to the player position to make
+	the player position in the middle of the square. ^^
 */
 int	ft_player_position(char *line, t_dB *db)
 {
@@ -96,6 +103,21 @@ int	ft_player_position(char *line, t_dB *db)
 	Also under the ft_map_control function, we place doors and keys.
 	We fill the empty spaces in the map. For further information,
 	check regarding functions.
+
+	We create a linked list by each line of the map file and save
+	it to our database. We also save the map width and height to our
+	database. We also save the player position and direction to our
+	database.
+
+	After that we invoke ft_map_control function to check if the map
+	is valid. If the map is not valid, it will throw an error.
+	
+	After that we invoke complete_to_rect function to complete the map
+	to the width of 10 if it is less than 10. We also fill the map with
+	spaces until it is 10 rows. 10 is not a magic number. It is just
+	a number that I chose. It can be any number. But it should be at
+	least 10. Because if the map is less than 10, it will be hard to
+	see the player in the map. So I chose 10. But it can be any number.
 */
 void	ft_map_init(char *line, t_dB *db, int fd)
 {
@@ -129,6 +151,14 @@ void	ft_map_init(char *line, t_dB *db, int fd)
 	This function is used to process the map file. It opens the file.
 	Then it reads the file line by line and checks if the file is valid.
 	If the map style is not valid, it will throw an error.
+	
+	ft_map_translate function reads the line and checks NO, SO, WE, EA, F, C.
+	Like key->value pairs, it reads them and check their values and save them to
+	our database.
+
+	Also when line starts with 11111(walls), it
+	means that our actual map started. At this point we call another function as
+	ft_map_init. This function is invoked under ft_map_translate function.
 */
 void	ft_map_process(t_dB *db, char *argv)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_map_translate.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bderya <bderya@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 08:05:48 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/11 13:45:25 by bderya           ###   ########.fr       */
+/*   Updated: 2023/01/15 13:57:23 by yogun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,30 @@ void	ft_floorceiling_read(t_dB *db, char *line, char c)
 
 /*
 	This function char by char checks if the line is a valid map line.
-	Line is the string that comes from GNL.
+	Line is the string that comes from GNL. Like key->value pairs, we
+	check every key. If key is NO, SO, WE, EA, F, C, 1: then we call the
+	relevant function. What are those?
+
+	ft_textures_read: If line start with one of those keys(NO, SO, WE, EA),
+		this function is invoked. It checks if the texture has been assigned
+		before. If not, it assigns the texture to the db. If it has been
+		assigned before, it throws an error.
+	
+	ft_floorceiling_read: If line start with one of those keys(F, C),
+		this function is invoked. It checks if the RGB values are valid.
+		If not, it throws an error. If in first two values of RGB, there
+		is no comma, it throws an error. If in third value of RGB, there
+		isn't a space, tab or new line it throws an error.
+
+	ft_map_init: This function is used to check if the map is valid.
+		It checks if the map is a rectangle and if the map is surrounded by walls. 
+		If the map is not valid, it will throw an error.
+		Here it also gets the map width and height.
+		Also under the ft_map_control function, we place doors and keys.
+		We fill the empty spaces in the map. For further information,
+		check regarding functions.
 */
-void	ft_map_translate(t_dB *a, char *line, int fd)
+void	ft_map_translate(t_dB *db, char *line, int fd)
 {
 	int	i;
 
@@ -100,19 +121,19 @@ void	ft_map_translate(t_dB *a, char *line, int fd)
 	while (line[i] == ' ' || line[i] == '\t')
 		i++;	
 	if (line[i] == 'N' && line[i + 1] == 'O')
-		ft_textures_read(a, line + 2, 'N');
+		ft_textures_read(db, line + 2, 'N');
 	else if (line[i] == 'S' && line[i + 1] == 'O')
-		ft_textures_read(a, line + 2, 'S');
+		ft_textures_read(db, line + 2, 'S');
 	else if (line[i] == 'W' && line[i + 1] == 'E')
-		ft_textures_read(a, line + i + 2, 'W');
+		ft_textures_read(db, line + i + 2, 'W');
 	else if (line[i] == 'E' && line[i + 1] == 'A')
-		ft_textures_read(a, line + i + 2, 'E');
+		ft_textures_read(db, line + i + 2, 'E');
 	else if (line[i] == 'F')
-		ft_floorceiling_read(a, line + i + 1, 'F');
+		ft_floorceiling_read(db, line + i + 1, 'F');
 	else if (line[i] == 'C')
-		ft_floorceiling_read(a, line + i + 1, 'C');
+		ft_floorceiling_read(db, line + i + 1, 'C');
 	else if (line[i] == '1')
-		ft_map_init(line, a, fd);
+		ft_map_init(line, db, fd);
 	else if (line[i] && line[i] != '\n')
-		ft_error("Map is invalid!\n", a);
+		ft_error("Map is invalid!\n", db);
 }
