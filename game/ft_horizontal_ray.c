@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_horizontal_ray.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bderya <bderya@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 12:12:09 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/11 13:35:48 by bderya           ###   ########.fr       */
+/*   Updated: 2023/01/12 14:50:43 by yogun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	ft_ray_cast(t_dB *db, t_ray *ray)
 		db->dist = 1000000; 
 		ft_vertical_ray(db, ray);
 		ft_horizontal_ray(db, ray);
-		db->dist = db->dist * cos(ft_degree_to_radian \ 
+		db->dist = db->dist * cos(ft_degree_to_radian
 			(angle_to_360(db->pa - ray->ra))); // we use this to fix fisheye effect
 		if (db->zeros > 3 && db->zeros != 6)
 			db->ray = (int)(ray->vy) % 64; // if we look right or left we take vertical ray's Y position
