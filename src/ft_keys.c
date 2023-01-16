@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_keys.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bderya <bderya@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 20:58:05 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/11 13:37:21 by bderya           ###   ########.fr       */
+/*   Updated: 2023/01/16 15:14:15 by yogun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	key_w(t_dB *db)
 	}
 }
 
-void	d_key(t_dB *db)
+void	key_d(t_dB *db)
 {
 	int		my;
 	int		mx;
@@ -111,7 +111,7 @@ void	key_s(t_dB *db)
 /*
 	In this function we define the keys that will be hooked.
 */
-int	ft_key_hook(int keyboard, t_dB *db)
+int	ft_key_pressed(int keyboard, t_dB *db)
 {
 	if (keyboard == 13)
 		key_w(db);
@@ -120,7 +120,7 @@ int	ft_key_hook(int keyboard, t_dB *db)
 	else if (keyboard == 1)
 		key_s(db);
 	else if (keyboard == 2)
-		d_key(db);
+		key_d(db);
 	else if (keyboard == 14)
 		key_e(db);
 	else if (keyboard == 53)
