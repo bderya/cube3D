@@ -6,7 +6,7 @@
 /*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 08:09:48 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/16 09:42:33 by yogun            ###   ########.fr       */
+/*   Updated: 2023/01/16 15:02:35 by yogun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,13 @@ void	ft_get_data_addr(t_dB *db)
 /*
 	This function renders the wall, door and key images. 
 	mlx_xpm_file_to_image functions will create a new image.
+	
+	void *mlx_xpm_file_to_image
+	( void *mlx_ptr, char *filename, int *width, int *height );
+	
+	mlx_xpm_file_to_image() will return NULL if an error occurs. 
+	Otherwise they return a non-null pointer as an image identifier.
+	This function will fill it using the specified filename.	
 */
 void	file_to_image(t_dB *db)
 {
@@ -147,18 +154,29 @@ void	ft_map_db_control(t_dB *db)
 	If the data is not available, the program will exit with an error. Also, in addition
 	the player position is checked and set in the function.
 
-	Then we call mlx_init function to create a new mlx instance. It returns a pointer to
-	the new instance. This pointer will be used in all the other mlx functions.
-
-	Then we call mlx_new_window function to create a new window. It returns a pointer to
-	the new window. Then we call mlx_new_image function to create a new image. It returns a pointer to
-	the new image. Then we call mlx_get_data_addr function to get the address of the image. It returns
-	a pointer to the image. Then we call mlx_put_image_to_window function to put the image to the window. It returns a pointer to the image. Then we call mlx_loop function to initiate a loop. It returns a pointer to the image..
-	xxx
-
 	If key is available, the function will check whether the key is collected or not.
 	If the key value is 1, the sprite will be activated and key value will be set to 0. 
 	It will be set to 1 when the plaayer collect the key.
+
+	Then we call mlx_init function to create a new mlx instance. It returns a pointer to
+	the new instance. This pointer will be used in all the other mlx functions.
+
+	We call file_to_image function which includes mlx_xpm_file_to_image function
+	to create a new image. It returns a pointer to the new image. Then we call mlx_get_data_addr
+	function to get the address of the image. It returns a pointer to the image.
+	
+	Then we call mlx_new_window function to create a new window. It returns a pointer to
+	the new window.
+	
+	mlx_mouse_hide() function hides the mouse cursor from the screen.
+
+	void mlx_hook
+	(mlx_win_list_t *win_ptr, int x_event, int x_mask, int (*f)(), void *param)
+	Then we call mlx_hook function to register the hooks. 
+	First hook is for ON_DESTROY event.
+	When the window is closed, the program will call ft_exit_game function.
+	Second hook is for ON_KEYDOWN event.
+	When the key is pressed, the program will call ft_key_pressed function.
 
 	Hooking into events is one of the most powerful tools that MiniLibX provides. 
 	It allows you to register to any of the aforementioned events 
@@ -167,11 +185,20 @@ void	ft_map_db_control(t_dB *db)
 	To achieve this, we call the function mlx_hook.
 	2: ON_KEYDOWN -> For key press moment
 	17: ON_DESTROY -> For window close moment little red button with cross
-	
-	To initiate a loop, we call the mlx_loop function with 
-	the mlx instance as only parameter
 
-	The mlx_loop_hook is one hook that is triggered when there's no event processed 
+	mlx_loop_hook function is used to register a function to be called
+	just before each new iteration of the event loop.
+
+	mlx_loop_hook ( void *mlx_ptr, int (*funct_ptr)(), void *param );
+	funct_ptr is a pointer to the function you want to be called when no event occurs.
+	This assignment is specific to the window defined by the  win_ptr  identifier.  The
+	param  adress  will be passed to the function everytime it is called, and should be used to
+	store the parameters it might need.
+	
+	int mlx_loop ( void *mlx_ptr );
+	To initiate a loop, we call the mlx_loop function with the mlx instance as only parameter.
+	To receive events, you must use mlx_loop ().
+	
 */
 void	ft_game_render(t_dB *db)
 {
@@ -190,8 +217,7 @@ void	ft_game_render(t_dB *db)
 	db->win = mlx_new_window(db->mlx, WIDTH, HEIGHT, "Cube3D");
 	mlx_mouse_hide();
 	mlx_hook(db->win, 17, 0, ft_exit_game, db);
-	mlx_hook(db->win, 2, 0, ft_key_hook, db);
-	// I will continue to write after gym, idk but am gonna fix bderya ..
+	mlx_hook(db->win, 2, 0, ft_key_pressed, db);
 	mlx_loop_hook(db->mlx, ft_game_start, db);
 	mlx_loop(db->mlx);
 }

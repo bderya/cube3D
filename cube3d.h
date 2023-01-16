@@ -6,7 +6,7 @@
 /*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 15:46:02 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/15 18:26:52 by yogun            ###   ########.fr       */
+/*   Updated: 2023/01/16 14:47:14 by yogun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,7 +168,7 @@ void	init_sprite(t_dB *db);
 void	sprite_draw(t_dB *db, int i);
 int		ft_game_start(t_dB *db);
 void	ft_game_render(t_dB *db);
-int		ft_key_hook(int keycode, t_dB *db);
+int		ft_key_pressed(int keycode, t_dB *db);
 void	ft_ray_cast(t_dB *db, t_ray *ray);
 void	ft_vertical_ray(t_dB *db, t_ray *ray);
 void	line_draw(t_dB *db, int i);
