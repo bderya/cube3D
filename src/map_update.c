@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_update.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bderya <bderya@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 11:23:10 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/11 13:56:29 by bderya           ###   ########.fr       */
+/*   Updated: 2023/01/16 19:29:46 by yogun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,16 @@ void	put_map_char(int mx, int my, t_dB *db, char c)
 }
 
 /*
-	In this function we read from the map the place where the
-	player is located currently.
+	In this function we read from the map the char value
+	from the place where the player is located currently.
+	
+	111
+	1e1
+	111
+	
+	In this map above, the player is located at the place
+	where the 'e' is. So we read the map and get the value
+	which is 'e' and return it.
 */
 char	get_map_char(int mx, int my, t_dB *db)
 {
