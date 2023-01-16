@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_game_render.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bderya <bderya@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 08:09:48 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/11 13:29:45 by bderya           ###   ########.fr       */
+/*   Updated: 2023/01/16 09:42:33 by yogun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,29 @@
 /*
 	mlx_get_data_addr returns information about the created image, 
 	allowing a user to modify it later.
-	mlx_get_data_addr returns a char * address that represents the begining of
-	the memory area where the image is stored.
 
-	First input specifies the image to use. 
-	The three next parameters should be the addresses of three different ->>
-	valid integers.
-	Second input will be filled with the number of bits needed to -> 
+	char *mlx_get_data_addr
+	( void *img_ptr, int *bits_per_pixel, int *size_line, int *endian );
+	
+	mlx_get_data_addr returns a char * address that represents the begining of
+	the memory area where the image is stored. From this adress, the first 
+	bits_per_pixel bits represent the color of the first pixel in the first
+	line of the image. The second group of bits_per_pixel bits represent the
+	second pixel of the first line, and so on.
+
+	img_ptr specifies the image which is going to be used. 
+	
+	*bits_per_pixel will be filled with the number of bits needed to 
 	represent a pixel color (also called the depth of the image).
-	Third input is the number of bytes used to store one line of ->
-	the image in memory. 
-	This information is needed to move from one line to another in the image.
-	Fourth input tells you wether the pixel color in the image needs to be stored in
-	little endian endian == 0, or big endian endian == 1.
-	First two elements of the array is empty because 
+	
+	*size_line is the number of bytes used to store one line of
+	the image in memory. This information is needed to move from 
+	one line to another in the image.
+	
+	endian tells you wether the pixel color in the image needs 
+	to be stored in:
+			little endian endian == 0, or big endian endian == 1.
+	Little endian reading from right to left, vice versa.
 */
 void	ft_get_data_addr(t_dB *db)
 {
@@ -85,10 +94,13 @@ void	file_to_image(t_dB *db)
 }
 
 /*
-	The function checks the correctness of the data received from the player.
-	If the data is incorrect, the program will exit with an error.
-	Otherwise, the function will return nothing.
-	Also, according to the player's position, the function will set the angle.	
+	This function checks whether the data in database for player has been initialized.
+	
+	If the data is initiliaziled, the function will check the player's position.
+	According to the letter which has been read from the map(E,N,W,S)
+	the function will set the angle of the player.
+
+	This angle is going to determine the beginning direction of the player.	
 */
 void	ft_player_db_control(t_dB *db)
 {
@@ -105,9 +117,11 @@ void	ft_player_db_control(t_dB *db)
 }
 
 /*
-	The function checks the correctness of the data received from the map.
-	If the data is incorrect, the program will exit with an error.
-	Otherwise, the function will return nothing.	
+	The function checks the the whether the texture and color data is available
+	in the database. If the data is not available, the program will exit with an error.
+	
+	At the end of the function, the ft_player_db_control will be invoked. In this function,
+	the player's position will be checked and the angle will be set.
 */
 void	ft_map_db_control(t_dB *db)
 {
@@ -129,9 +143,22 @@ void	ft_map_db_control(t_dB *db)
 }
 
 /*
-	This function basically render the game window. Besides,
-	it also checks whether the data received from the map.
-	it calculates the angles of the player's position.
+	The ft_map_db_control function checks whether the data in the database is available.
+	If the data is not available, the program will exit with an error. Also, in addition
+	the player position is checked and set in the function.
+
+	Then we call mlx_init function to create a new mlx instance. It returns a pointer to
+	the new instance. This pointer will be used in all the other mlx functions.
+
+	Then we call mlx_new_window function to create a new window. It returns a pointer to
+	the new window. Then we call mlx_new_image function to create a new image. It returns a pointer to
+	the new image. Then we call mlx_get_data_addr function to get the address of the image. It returns
+	a pointer to the image. Then we call mlx_put_image_to_window function to put the image to the window. It returns a pointer to the image. Then we call mlx_loop function to initiate a loop. It returns a pointer to the image..
+	xxx
+
+	If key is available, the function will check whether the key is collected or not.
+	If the key value is 1, the sprite will be activated and key value will be set to 0. 
+	It will be set to 1 when the plaayer collect the key.
 
 	Hooking into events is one of the most powerful tools that MiniLibX provides. 
 	It allows you to register to any of the aforementioned events 
@@ -151,16 +178,13 @@ void	ft_game_render(t_dB *db)
 	ft_map_db_control(db);
 	db->pdx = cos(ft_degree_to_radian(db->pa));
 	db->pdy = -1 * sin(ft_degree_to_radian(db->pa));
-	//db->is_key = '1'; Norm error yeri
 	if (db->is_key == '1')
 	{
 		db->sprite = '1';
 		db->is_key = '0';
 	}
-	// if (KEYS == '1') normm error yeri
-	// 	db->is_key = '1'; norm error yeri
-	db->key_px += 0.5;
-	db->key_py += 0.5;
+	db->key_px = db->key_px + 0.5;
+	db->key_py = db->key_py + 0.5;
 	db->mlx = mlx_init();
 	file_to_image(db);
 	db->win = mlx_new_window(db->mlx, WIDTH, HEIGHT, "Cube3D");
