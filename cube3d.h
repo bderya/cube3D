@@ -6,7 +6,7 @@
 /*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 15:46:02 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/16 14:47:14 by yogun            ###   ########.fr       */
+/*   Updated: 2023/01/17 17:49:03 by yogun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ typedef struct s_sprite {
 	b:      Some const
 	lineh: 	Line height
 	linelen:	Line length
+	t_x_step:	Translation X step
+	t_y_step:	Translation Y step
 */
 typedef struct s_dB {
 	void	*mlx;

@@ -6,7 +6,7 @@
 /*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 19:45:47 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/16 15:10:51 by yogun            ###   ########.fr       */
+/*   Updated: 2023/01/17 16:34:20 by yogun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	my_mlx_pixel_put_mini(t_dB *a, int x, int y, int color)
 	This function is counting and changing the state of the
 	sprite in every 20 frames. According to this, later
 	we will render different images to animate things. Such as key :)
+	After 400, we reset the loop to 1.
 */
 void	ft_timer(t_dB *db)
 {
@@ -33,7 +34,7 @@ void	ft_timer(t_dB *db)
 	{
 		if (db->sprite_state == '1')
 			db->sprite_state = '2';
-		else
+		else if (db->sprite_state == '2')
 			db->sprite_state = '1';
 	}
 	if (db->loop == 401)

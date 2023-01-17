@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   math_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bderya <bderya@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 08:35:00 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/11 13:57:02 by bderya           ###   ########.fr       */
+/*   Updated: 2023/01/17 17:53:20 by yogun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ double	ft_degree_to_radian(double degree)
 {
 	return (degree * 3.14159 / 180.0);
 }
-
+/*
+	This function converts minus degrees to positive degrees.
+	Also converts degrees greater than 360 to degrees between 0 and 360.
+*/
 double	angle_to_360(double degree)
 {
 	if (degree >= 360)
