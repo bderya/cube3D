@@ -6,7 +6,7 @@
 /*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 07:55:40 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/19 12:05:46 by yogun            ###   ########.fr       */
+/*   Updated: 2023/01/19 22:51:52 by yogun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,10 @@ void	ft_map_render(t_dB *db)
 	Then, it calls ft_map_render() to render the map.
 	After that, it calls ft_minimap_render() to render the minimap.
 	Then, it checks if the mouse is moved to the right or left.
-	Finally, it checks if the player is in the door and if the door is open.
-	If the player is in the door and the door is open, it calls put_map_char()
-	to put a 'D' on the map. This is to make sure that the player can't go
-	through the door.	
+	Finally, it checks if the player isn't on the door field and the door is open
+	and the player has walked 20 steps. Then it calls put_map_char()
+	to put a 'D' on the map. This is to make sure that door is closed
+	after the player has walked 20 steps.
 */
 int	ft_game_start(t_dB *db)
 {
@@ -72,6 +72,7 @@ int	ft_game_start(t_dB *db)
 	ft_minimap_render(db->map, db);
 	x = db->mouse_x;
 	mlx_mouse_get_pos(db->win, &db->mouse_x, &db->mouse_y);
+	printf("mouse_x: %d - %d\n", db->mouse_x, db->mouse_y);
 	if (db->mouse_x > x)
 		right_key(db);
 	else if (db->mouse_x < x)
