@@ -6,7 +6,7 @@
 /*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:00:58 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/12 15:18:55 by yogun            ###   ########.fr       */
+/*   Updated: 2023/01/20 14:25:03 by yogun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,4 @@ void	ft_start(char *argv)
 			ft_error("Map format is invalid!\n", &db);
 		ft_map_process(&db, argv);
 		ft_game_render(&db);
-		//system("leaks cub3D"); norm error yeri .
 }

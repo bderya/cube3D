@@ -6,7 +6,7 @@
 /*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 22:04:30 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/10 17:25:54 by yogun            ###   ########.fr       */
+/*   Updated: 2023/01/17 17:43:01 by yogun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void	put_texture_pixel(t_dB *db, int x, int y, int k)
 	i = db->ray;
 	k = k + db->stepy;
 	j = (k << 6) / db->linelen;
-	//printf("%d\n",db->zeros);
 	dst = db->addr[db->zeros] + ((j * db->line_length[db->zeros])
 			+ i * (db->bits_per_pixel[db->zeros] / 8));
 	my_mlx_pixel_put(db, x, y, *(unsigned int *)dst);
@@ -54,6 +53,9 @@ void	put_texture_pixel(t_dB *db, int x, int y, int k)
 /*
 	This function draw the fllor and ceiling colors or put images to the
 	other parts of the game.
+	In first if condition we draw the ceiling with RGB values.
+	In second if condition we draw the floor with RGB values.
+	In else condition we put the image pixels to the walls or doors.
 */
 void	line_draw_2(t_dB *db, int i, int lineh, int lineoff)
 {
@@ -76,10 +78,19 @@ void	line_draw_2(t_dB *db, int i, int lineh, int lineoff)
 	}
 }
 
+/*
+	lineh = lineheight
+	lineoff = line offset to center the screen
+
+	This function draw the walls and put textures to the walls.
+	If the lineheight is bigger than the screen height, we cut the line
+	to the screen height and put the rest of the line to the floor and
+	ceiling.
+*/
 void	line_draw(t_dB *db, int i)
 {
-	int	lineh;	//lineheight
-	int	lineoff;	//line offset to center the screen
+	int	lineh;
+	int	lineoff;
 
 	lineh = (HEIGHT << 5) / db->dist;
 	db->stepy = 0;

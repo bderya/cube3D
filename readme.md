@@ -8,6 +8,8 @@ The goal of ``cub3d`` is to make *something* using raycasting (like [Wolfenstein
 This project is written in ``c`` using ``mini-libx`` Library, 
 This old library has a little builtin-funcs that's can make my project show on the graphics
 
+
+
 ## Commands
 
 | KEY           | Action        |
@@ -21,3 +23,4 @@ This old library has a little builtin-funcs that's can make my project show on t
 | `→`           | turn right    |
 | `←`           | turn left     |
 | `MOUSE MOVE`           | look around |
+
