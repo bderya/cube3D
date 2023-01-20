@@ -6,7 +6,7 @@
 /*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 07:55:40 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/19 22:51:52 by yogun            ###   ########.fr       */
+/*   Updated: 2023/01/20 08:59:38 by yogun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ int	ft_game_start(t_dB *db)
 	ft_minimap_render(db->map, db);
 	x = db->mouse_x;
 	mlx_mouse_get_pos(db->win, &db->mouse_x, &db->mouse_y);
-	printf("mouse_x: %d - %d\n", db->mouse_x, db->mouse_y);
 	if (db->mouse_x > x)
 		right_key(db);
 	else if (db->mouse_x < x)

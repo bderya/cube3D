@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_initdata.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bderya <bderya@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:02:05 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/11 13:36:18 by bderya           ###   ########.fr       */
+/*   Updated: 2023/01/19 23:11:46 by yogun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
 	This function initializes all the variables in the struct.
 */
-void	ft_initdata_sub2(t_dB *db)
+void	ft_initdata_2(t_dB *db)
 {
 	db->map_height = 0;
 	db->map_width = 0;
@@ -59,5 +59,5 @@ void	ft_initdata(t_dB *db)
 		array_counter++;
 		db->addr[array_counter] = NULL;
 	}
-	ft_initdata_sub2(db);
+	ft_initdata_2(db);
 }
