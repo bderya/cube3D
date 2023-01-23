@@ -30,3 +30,5 @@ This old library has a little builtin-funcs that's can make my project show on t
 I strongly suggest everybody to read [this documentation](https://harm-smits.github.io/42docs/projects/cub3d). It mentions everything we need to know.
 
 In our project the main resource that we used to was [this youtube video](https://www.youtube.com/watch?v=gYRrGTC7GtA). We tried to follow the content creator step by step especially with mathemathical formulas and calculations which we use in raycasting.
+
+<img src="./textures/flow-chart.svg">
