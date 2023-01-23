@@ -6,7 +6,7 @@
 /*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 15:26:42 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/15 18:47:34 by yogun            ###   ########.fr       */
+/*   Updated: 2023/01/23 11:32:19 by yogun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,14 +84,14 @@ int	ft_player_position(char *line, t_dB *db)
 			|| line[i] == 'E' || line[i] == 'W')
 		{
 			if (db->player != '\0')
-				ft_error("Error! Only one player is allowed in map file.\n", db);
+				ft_error("Only one player is allowed in map file.\n", db);
 			db->player = line[i];
 			db->px = i + 0.5;
 			db->py = db->map_height + 0.5;
 			line[i] = '0';
 		}
 		else if (line[i] != ' ' && line[i] != '1' && line[i] != '0')
-			ft_error("Error! Unknown character is found in the map file.\n", db);
+			ft_error("Unknown character is found in the map file.\n", db);
 		i++;
 	}
 	return (i);
