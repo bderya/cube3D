@@ -6,7 +6,7 @@
 /*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 08:09:48 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/20 09:01:53 by yogun            ###   ########.fr       */
+/*   Updated: 2023/01/23 11:33:14 by yogun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ void	file_to_image(t_dB *db)
 void	ft_player_db_control(t_dB *db)
 {
 	if (db->player == '\0')
-		ft_error("Error! Position of player is not found!\n", db);
+		ft_error("Position of player is not found!\n", db);
 	if (db->player == 'E')
 		db->pa = 0;
 	else if (db->player == 'N')
@@ -133,19 +133,19 @@ void	ft_player_db_control(t_dB *db)
 void	ft_map_db_control(t_dB *db)
 {
 	if (db->no == NULL)
-		ft_error("Error! Texture for 'NO' is not found!\n", db);
+		ft_error("Texture for 'NO' is not found!\n", db);
 	if (db->ea == NULL)
-		ft_error("Error! Texture for 'EA' is not found!\n", db);
+		ft_error("Texture for 'EA' is not found!\n", db);
 	if (db->we == NULL)
-		ft_error("Error! Texture for 'WE' is not found!\n", db);
+		ft_error("Texture for 'WE' is not found!\n", db);
 	if (db->so == NULL)
-		ft_error("Error! Texture for 'SO' is not found!\n", db);
+		ft_error("Texture for 'SO' is not found!\n", db);
 	if (db->c[0] < 0)
-		ft_error("Error! For ceiling RGB is not found!\n", db);
+		ft_error("For ceiling RGB is not found!\n", db);
 	if (db->f[0] < 0)
-		ft_error("Error! For floor RGB is not found!\n", db);
+		ft_error("For floor RGB is not found!\n", db);
 	if (!db->map)
-		ft_error("Error! Map is not found!\n", db);
+		ft_error("Map is not found!\n", db);
 	ft_player_db_control(db);
 }
 

@@ -6,7 +6,7 @@
 /*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 15:08:55 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/23 11:14:15 by yogun            ###   ########.fr       */
+/*   Updated: 2023/01/23 11:32:37 by yogun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ void	ft_wall_control(char *s, t_dB *db)
 	while (s[i] && s[i] == ' ')
 		i++;
 	if (s[i] != '1')
-		ft_error("Error! Map content is invalid!\n", db);
+		ft_error("Map content is invalid!\n", db);
 	while (s[i] == ' ' || s[i] == '1')
 		i++;
 	if (s[i] && s[i] != '\n')
-		ft_error("Error! Map content is invalid!\n", db);
+		ft_error("Map content is invalid!\n", db);
 }
 
 /*
@@ -94,7 +94,7 @@ void	ft_check_maplines(char *s, char *s2, char *s3, t_dB *db)
 	while (s2[i] && s2[i] == ' ')
 		i++;
 	if (s2[i] != '1')
-		ft_error("Error! Map is invalid.\n", db);
+		ft_error("Map is invalid.\n", db);
 	while (s2 && s2[i] && s2[i] != '\n')
 	{
 		while (s2[i] && (s2[i] == ' ' || s2[i] == '1'))
@@ -134,7 +134,7 @@ void	ft_map_control(t_list	*map, t_dB *db)
 
 	tmp = map->nxt;
 	if (!tmp)
-		ft_error("Error! Map is invalid.\n", db);
+		ft_error("Map is invalid.\n", db);
 	tmp2 = tmp->nxt;
 	while (tmp)
 	{

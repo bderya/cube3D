@@ -6,7 +6,7 @@
 /*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 08:05:48 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/15 13:57:23 by yogun            ###   ########.fr       */
+/*   Updated: 2023/01/23 11:33:46 by yogun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_textures_read(t_dB *db, char *line, char c)
 
 	if ((c == 'N' && db->no) || (c == 'S' && db->so)
 		|| (c == 'W' && db->we) || (c == 'E' && db->ea))
-		ft_error("Error! One texture has been assigned more than one picture.\n", db);
+		ft_error("One texture has been assigned more than one picture.\n", db);
 	tmp = ft_strtrim(line, "\n");
 	if (c == 'N')
 		db->no = ft_strtrim(tmp, " ");
@@ -49,10 +49,10 @@ int	ft_floorceiling_read_2(char *line, int j, t_dB *a)
 		&& (ft_isdigit(line[i]) || line[i] == ' ' || line[i] == '\t'))
 		i++;
 	if (j < 2 && line[i] != ',')
-		ft_error("Error! RGB format is invalid.\n", a);
+		ft_error("RGB format is invalid.\n", a);
 	if (j == 2 && line[i] && line[i] != '\n'
 		&& line[i] != ' ' && line[i] != '\t')
-		ft_error("Error! RGB format is invalid.\n", a);
+		ft_error("RGB format is invalid.\n", a);
 	return (i);
 }
 
@@ -79,7 +79,7 @@ void	ft_floorceiling_read(t_dB *db, char *line, char c)
 		i = ft_atoi(tmp);
 		free(tmp);
 		if (i > 255 || i < 0)
-			ft_error("Error! Colour value can be in between 0-255\n", db);
+			ft_error("Colour value can be in between 0-255\n", db);
 		if (c == 'C')
 			db->c[j] = i;
 		else if (c == 'F')
