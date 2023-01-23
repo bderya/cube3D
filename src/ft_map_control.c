@@ -6,7 +6,7 @@
 /*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 15:08:55 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/15 18:42:28 by yogun            ###   ########.fr       */
+/*   Updated: 2023/01/23 11:14:15 by yogun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,16 @@ void	ft_wall_control(char *s, t_dB *db)
 	in this function we put doors and keys according to some
 	patterns. We also check if the map is valid. For doors we 
 	ask for a pattern like this:
-		001
-		101
-		001
+		001		  001
+		101  ->   1D1		
+		001       001
 	In this pattern, automatically we assign the center of the
 	pattern 'D' character for door.
 
 	For keys we ask for a pattern like this:
-		000
-		000
-		000
+		000      000
+		000	 ->	 0K0
+		000      000
 	Since, GNL reads the map line by line from top the bottom,
 	key is placed as soon as proper pattern is being caught. So,
 	most probably the key will be placed in the left top corner of
