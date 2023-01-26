@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_horizontal_ray.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: bderya <bderya@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 12:12:09 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/17 17:55:02 by yogun            ###   ########.fr       */
+/*   Updated: 2023/01/26 01:27:59 by bderya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,13 @@ void	ft_horizontal_ray_2(t_dB *db, t_ray *ray)
 	}
 }
 
+void	ft_horizontal_ray_sub2(t_dB *db, t_ray *ray)
+{
+	ray->depth = db->map_height;
+	ray->rx = ray->px;
+	ray->ry = ray->py;
+}
+
 /*
 	In this function we calculate where the ray corssing with x axis.
 	This function checks where the ray cross with first vertical line and position.
@@ -99,7 +106,6 @@ void	ft_horizontal_ray(t_dB *db, t_ray *ray)
 	{
 		ray->zerosh = 2;
 		ray->ry = (((int)ray->py >> 6) << 6) - 0.0001;
-		// 
 		ray->rx = (ray->py - ray->ry) * ray->atan_ra + ray->px;
 		ray->yo = -64;
 		ray->xo = 64 * ray->atan_ra;
@@ -115,9 +121,7 @@ void	ft_horizontal_ray(t_dB *db, t_ray *ray)
 	else if (sin(ft_degree_to_radian(ray->ra)) < 0.0001 && \
 		sin(ft_degree_to_radian(ray->ra)) > -0.0001)
 	{
-		ray->depth = db->map_height;
-		ray->rx = ray->px;
-		ray->ry = ray->py;
+		ft_horizontal_ray_sub2(db, ray);
 	}
 	ft_horizontal_ray_2(db, ray);
 }
@@ -163,11 +167,11 @@ void	ft_ray_cast(t_dB *db, t_ray *ray)
 	ray->py = db->py * 64;
 	while (i < WIDTH)
 	{
-		db->dist = 1000000; 
+		db->dist = 1000000;
 		ft_vertical_ray(db, ray);
 		ft_horizontal_ray(db, ray);
-		db->dist = db->dist * cos(ft_degree_to_radian
-			(angle_to_360(db->pa - ray->ra)));
+		db->dist = (db->dist
+				* cos(ft_degree_to_radian(angle_to_360(db->pa - ray->ra))));
 		if (db->zeros > 3 && db->zeros != 6)
 			db->ray = (int)(ray->vy) % 64;
 		else

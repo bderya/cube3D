@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+         #
+#    By: bderya <bderya@student.42heilbronn.de>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/08 08:10:39 by yogun             #+#    #+#              #
-#    Updated: 2023/01/15 18:25:49 by yogun            ###   ########.fr        #
+#    Updated: 2023/01/26 02:28:44 by bderya           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,6 +68,9 @@ ${NAME}: ${OBJ}
 	@make -C $(LIBFTDIR)
 	@make -C $(MLXDIR)
 	@${CC} ${OBJ} ${INCLIBFT} ${INCMLX} -framework OpenGL -framework AppKit -o ${NAME}
+	@mkdir obj
+	@mv obj ./src
+	@mv ./src/*.o ./src/obj
 	@echo $(B)
 	@echo "                       _|         _|_|_|     _|_|_|  "
 	@echo "   _|_|_|   _|    _|   _|_|_|           _|   _|    _|"
@@ -84,6 +87,7 @@ clean:
 	${RM} ${OBJ} ${DEP}
 	@cd $(LIBFTDIR) && $(MAKE) fclean
 	@cd $(MLXDIR) && $(MAKE) clean
+	@rm -rf ./src/obj
 
 fclean: clean
 	${RM} ${NAME}

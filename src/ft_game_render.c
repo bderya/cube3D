@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_game_render.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: bderya <bderya@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 08:09:48 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/23 11:33:14 by yogun            ###   ########.fr       */
+/*   Updated: 2023/01/25 11:53:03 by bderya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,8 @@ void	file_to_image(t_dB *db)
 }
 
 /*
-	This function checks whether the data in database for player has been initialized.
+	This function checks whether the data in database for player has been 
+	initialized.
 	
 	If the data is initiliaziled, the function will check the player's position.
 	According to the letter which has been read from the map(E,N,W,S)
@@ -125,10 +126,11 @@ void	ft_player_db_control(t_dB *db)
 
 /*
 	The function checks the the whether the texture and color data is available
-	in the database. If the data is not available, the program will exit with an error.
+	in the database. If the data is not available, the program will exit with an
+	error.
 	
-	At the end of the function, the ft_player_db_control will be invoked. In this function,
-	the player's position will be checked and the angle will be set.
+	At the end of the function, the ft_player_db_control will be invoked. In this
+	function, the player's position will be checked and the angle will be set.
 */
 void	ft_map_db_control(t_dB *db)
 {
@@ -150,23 +152,25 @@ void	ft_map_db_control(t_dB *db)
 }
 
 /*
-	The ft_map_db_control function checks whether the data in the database is available.
-	If the data is not available, the program will exit with an error. Also, in addition
-	the player position is checked and set in the function.
+	The ft_map_db_control function checks whether the data in the database is
+	available. If the data is not available, the program will exit with an error.
+	Also, in addition the player position is checked and set in the function.
 
-	If key is available, the function will check whether the key is collected or not.
-	If the key value is 1, the sprite will be activated and key value will be set to 0. 
-	It will be set to 1 when the plaayer collect the key.
+	If key is available, the function will check whether the key is collected or
+	not. If the key value is 1, the sprite will be activated and key value will
+	be set to 0. It will be set to 1 when the plaayer collect the key.
 
-	Then we call mlx_init function to create a new mlx instance. It returns a pointer to
-	the new instance. This pointer will be used in all the other mlx functions.
+	Then we call mlx_init function to create a new mlx instance. It returns a 
+	pointer to the new instance. This pointer will be used in all the other mlx
+	functions.
 
 	We call file_to_image function which includes mlx_xpm_file_to_image function
-	to create a new image. It returns a pointer to the new image. Then we call mlx_get_data_addr
-	function to get the address of the image. It returns a pointer to the image.
+	to create a new image. It returns a pointer to the new image. Then we call 
+	mlx_get_data_addr function to get the address of the image. It returns a 
+	pointer to the image.
 	
-	Then we call mlx_new_window function to create a new window. It returns a pointer to
-	the new window.
+	Then we call mlx_new_window function to create a new window. It returns a
+	pointer to the new window.
 	
 	mlx_mouse_hide() function hides the mouse cursor from the screen.
 
@@ -190,13 +194,14 @@ void	ft_map_db_control(t_dB *db)
 	just before each new iteration of the event loop.
 
 	mlx_loop_hook ( void *mlx_ptr, int (*funct_ptr)(), void *param );
-	funct_ptr is a pointer to the function you want to be called when no event occurs.
-	This assignment is specific to the window defined by the  win_ptr  identifier.  The
-	param  adress  will be passed to the function everytime it is called, and should be used to
-	store the parameters it might need.
+	funct_ptr is a pointer to the function you want to be called when no
+	event occurs. This assignment is specific to the window defined by the win_ptr
+	identifier. The param  adress  will be passed to the function everytime 
+	it is called, and should be used to store the parameters it might need.
 	
 	int mlx_loop ( void *mlx_ptr );
-	To initiate a loop, we call the mlx_loop function with the mlx instance as only parameter.
+	To initiate a loop, we call the mlx_loop function with the mlx instance as
+	only parameter.
 	To receive events, you must use mlx_loop ().
 	
 */

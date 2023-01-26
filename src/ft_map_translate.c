@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_map_translate.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: bderya <bderya@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 08:05:48 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/23 11:33:46 by yogun            ###   ########.fr       */
+/*   Updated: 2023/01/25 16:39:04 by bderya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ void	ft_textures_read(t_dB *db, char *line, char c)
 	This function is second part as the name indicates.
 	It checks if the RGB values are valid. If not, it throws an error.
 	If in first two values of RGB, there is no comma, it throws an error.
-	If in third value of RGB, there isn't a space, tab or new line it throws an error.
+	If in third value of RGB, there isn't a space, tab or new line it throws
+	an error.
 */
 int	ft_floorceiling_read_2(char *line, int j, t_dB *a)
 {
@@ -119,7 +120,7 @@ void	ft_map_translate(t_dB *db, char *line, int fd)
 
 	i = 0;
 	while (line[i] == ' ' || line[i] == '\t')
-		i++;	
+		i++;
 	if (line[i] == 'N' && line[i + 1] == 'O')
 		ft_textures_read(db, line + 2, 'N');
 	else if (line[i] == 'S' && line[i + 1] == 'O')

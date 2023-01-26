@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: bderya <bderya@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 22:02:26 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/19 12:21:12 by yogun            ###   ########.fr       */
+/*   Updated: 2023/01/25 12:07:46 by bderya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ void	ft_colors_minimap(t_dB *db, int x, int y, int k)
 	Here we render the player on the minimap. We do this by drawing a square around
 	the player position. The size of the square is 1/250 of the total map size.
 	
-	We do drawing by mlx_pixel_put() function. To do it we invoke my_mlx_pixel_put_mini()
-	function. This function takes 4 arguments. The first one is the database, the
-	second one is the x coordinate, the third one is the y coordinate and the last
-	one is the color.
+	We do drawing by mlx_pixel_put() function. To do it we invoke 
+	my_mlx_pixel_put_mini() function. This function takes 4 arguments. 
+	The first one is the database, the second one is the x coordinate, 
+	the third one is the y coordinate and the last one is the color.
 */
 void	ft_player_minimap(t_dB *db, double x, double y)
 {
@@ -84,8 +84,8 @@ void	ft_player_minimap(t_dB *db, double x, double y)
 	of the map. If so we move the player left or right so that the player is always
 	in the middle of the minimap.
 
-	In first else condition we update player position on the minimap so that the player
-	is always in the middle of the minimap.
+	In first else condition we update player position on the minimap so that the 
+	player is always in the middle of the minimap.
 	
 	Then we do same things for the y axis.
 	
@@ -113,7 +113,8 @@ void	ft_player_init(t_dB *db)
 
 /*
 	This is the second part of the minimap function. It is called in the first part
-	of the function. It renders the map and invoke the function that renders the player.
+	of the function. It renders the map and invoke the function that renders the
+	player.
 
 	In first if condition we render walls on minimap.
 	In second if condition we render doors on minimap.
@@ -152,15 +153,16 @@ void	ft_sub_minimap(t_list *map, t_dB *db, double x)
 	In this function we render the minimap.
 
 	We first check if the minimap is already rendered and if so we destroy it.
-	Then we create a new image and get the data address of it. We create the image %20
-	of the size of the window. This is going to be the size of the minimap.
+	Then we create a new image and get the data address of it. We create the 
+	image %20 of the size of the window. This is going to be the size of the 
+	minimap.
 	
-	We then check if the map is bigger than 11x11. If it is we check if the player is
-	less than 6 blocks away from the top or bottom of the map. If so we move the map
-	up or down so that the player is always in the middle of the minimap.
+	We then check if the map is bigger than 11x11. If it is we check if the player
+	is less than 6 blocks away from the top or bottom of the map. If so we move
+	the map up or down so that the player is always in the middle of the minimap.
 
-	Then we invoke the second part of the function andthen we finish the function with
-	putting the image to the window.
+	Then we invoke the second part of the function andthen we finish the function
+	with putting the image to the window.
 	
 */
 void	ft_minimap_render(t_list *map, t_dB *db)

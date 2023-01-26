@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_keys.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: bderya <bderya@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 20:58:05 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/23 10:55:31 by yogun            ###   ########.fr       */
+/*   Updated: 2023/01/25 20:17:19 by bderya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,9 @@ void	key_a(t_dB *db)
 	the 'W' button. Hence, when we click, our player current position is increased 
 	0,2 time player's cos or sin component. We get this value into
 	my and mx. This value is not the exact value of the player's
-	current position. It is player's effective area kind of. This is why we use 0,2 rather
-	than 0,1. Because it provides us, for instance collect the key 0,1 before
-	the location of the key. So we can collect the key.
+	current position. It is player's effective area kind of. This is why we use 
+	0,2 rather than 0,1. Because it provides us, for instance collect the key 0,1
+	before the location of the key. So we can collect the key.
 	
 	With get_map_char() we get from the map the char value
 	from the place where the player is located currently and pack
@@ -94,7 +94,7 @@ void	key_w(t_dB *db)
 	int		my;
 	int		mx;
 	char	val;
-	
+
 	mx = db->px + (db->pdx * 0.2);
 	my = db->py + (db->pdy * 0.2);
 	val = get_map_char(mx, my, db);
@@ -118,9 +118,9 @@ void	key_w(t_dB *db)
 	the 'D' button. Hence, when we click, our player current position is increased 
 	0,2 time player's cos or sin component. We get this value into
 	my and mx. This value is not the exact value of the player's
-	current position. It is player's effective area kind of. This is why we use 0,2 rather
-	than 0,1. Because it provides us, for instance collect the key 0,1 before
-	the location of the key. So we can collect the key.
+	current position. It is player's effective area kind of. This is why we use
+	0,2 rather than 0,1. Because it provides us, for instance collect the key 0,1
+	before the location of the key. So we can collect the key.
 	
 	With get_map_char() we get from the map the char value
 	from the place where the player is located currently and pack
@@ -168,9 +168,9 @@ void	key_d(t_dB *db)
 	the 'S' button. Hence, when we click, our player current position is increased 
 	0,2 time player's cos or sin component. We get this value into
 	my and mx. This value is not the exact value of the player's
-	current position. It is player's effective area kind of. This is why we use 0,2 rather
-	than 0,1. Because it provides us, for instance collect the key 0,1 before
-	the location of the key. So we can collect the key.
+	current position. It is player's effective area kind of. This is why we use
+	0,2 rather than 0,1. Because it provides us, for instance collect the key 0,1
+	before the location of the key. So we can collect the key.
 	
 	With get_map_char() we get from the map the char value
 	from the place where the player is located currently and pack

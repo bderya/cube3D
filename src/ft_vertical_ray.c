@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_vertical_ray.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: bderya <bderya@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 12:10:56 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/17 17:31:16 by yogun            ###   ########.fr       */
+/*   Updated: 2023/01/25 13:03:27 by bderya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,12 @@ void	ft_vertical_ray_2(t_dB *db, t_ray *ray)
 	This function checks where the ray cross with first vertical line and position.
 	
 	In first if condition, we check if the ray is looking right. 
-	If it is, we calculate the position of the first vertical line in accordance with. 
-	Then we calculate the position of the first vertical line.
+	If it is, we calculate the position of the first vertical line in accordance 
+	with. Then we calculate the position of the first vertical line.
 
 	In second if condition, we check if the ray is looking left. 
-	If it is, we calculate the position of the first vertical line in accordance with. 
-	Then we calculate the position of the first vertical line.
+	If it is, we calculate the position of the first vertical line in accordance
+	with. Then we calculate the position of the first vertical line.
 
 	In third if condition, we check if the ray is looking straight. If so,
 	we set the depth to the map width and return.

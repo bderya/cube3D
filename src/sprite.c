@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sprite.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: bderya <bderya@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 22:02:10 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/17 17:52:02 by yogun            ###   ########.fr       */
+/*   Updated: 2023/01/25 13:00:37 by bderya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,21 +47,23 @@ void	put_sprite_pixel(t_dB *db, int x, int y)
 	We give to z value 10. It will be used for the height of the sprite. Height
 	or distance from the ground.
 	
-	Then we calculate the cos and sin components of the sprite. Since, spring always
-	should be visible to the player perpendicularly, we can use the player's angle
-	to calculate the cos and sin components of the sprite. We save the values to
-	the cos and sin variables of the sprite structure.
+	Then we calculate the cos and sin components of the sprite. Since, spring
+	always should be visible to the player perpendicularly, we can use the
+	player's angle to calculate the cos and sin components of the sprite.
+	We save the values to the cos and sin variables of the sprite structure.
 
 	We calculate the x and y coordinates of the sprite. We multiply the distance
-	of the sprite with the cos and sin components of the sprite. We save the values
-	to the x and y variables of the sprite structure.
+	of the sprite with the cos and sin components of the sprite. We save
+	the values to the x and y variables of the sprite structure.
 
 	We save the spr.y of the sprite to the b variable of the database. This is like
-	a constant value. We need to do in this way for raycasting. and all these calculations
-	after that point will be done according to the raycasting math.
+	a constant value. We need to do in this way for raycasting. and all
+	these calculations after that point will be done according to the 
+	raycasting math.
 
-	P.S.: 800 is an artbitrary value. I chose it proportionally according to the screen
-	size. For more information: https://lodev.org/cgtutor/raycasting3.html
+	P.S.: 800 is an artbitrary value. I chose it proportionally according 
+	to the screen size.
+	For more information: https://lodev.org/cgtutor/raycasting3.html
 */
 void	init_sprite(t_dB *db)
 {
