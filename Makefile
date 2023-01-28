@@ -6,7 +6,7 @@
 #    By: bderya <bderya@student.42heilbronn.de>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/08 08:10:39 by yogun             #+#    #+#              #
-#    Updated: 2023/01/28 18:16:34 by bderya           ###   ########.fr        #
+#    Updated: 2023/01/28 18:22:06 by bderya           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,7 +70,7 @@ lsan: fclean $(LSANLIB)
 lsan: all
 
 $(LSANLIB): 
-	@if [ ! -d "LeakSanitizer" ]; then git clone git@github.com:bderya/LeakSanitizer.git; fi
+	@if [ ! -d "LeakSanitizer" ]; then git clone https://github.com/bderya/LeakSanitizer.git; fi
 	$(MAKE) -C LeakSanitizer
 
 
