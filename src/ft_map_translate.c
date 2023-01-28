@@ -6,11 +6,18 @@
 /*   By: bderya <bderya@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 08:05:48 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/25 16:39:04 by bderya           ###   ########.fr       */
+/*   Updated: 2023/01/28 17:12:22 by bderya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube3d.h"
+#include <stdbool.h>
+bool	check_if_exit(char *smth)
+{
+	if (access(ft_strtrim(smth, " "), R_OK) == -1)
+		return (false);
+	return (true);
+}
 
 /*
 	This function is used to packa all the information from the map into the db.
@@ -23,13 +30,13 @@ void	ft_textures_read(t_dB *db, char *line, char c)
 		|| (c == 'W' && db->we) || (c == 'E' && db->ea))
 		ft_error("One texture has been assigned more than one picture.\n", db);
 	tmp = ft_strtrim(line, "\n");
-	if (c == 'N')
+	if (c == 'N' && check_if_exit(tmp))
 		db->no = ft_strtrim(tmp, " ");
-	else if (c == 'S')
+	else if (c == 'S' && check_if_exit(tmp))
 		db->so = ft_strtrim(tmp, " ");
-	else if (c == 'W')
+	else if (c == 'W' && check_if_exit(tmp))
 		db->we = ft_strtrim(tmp, " ");
-	else if (c == 'E')
+	else if (c == 'E' && check_if_exit(tmp))
 		db->ea = ft_strtrim(tmp, " ");
 	free(tmp);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: bderya <bderya@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:15:48 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/07 15:06:36 by yogun            ###   ########.fr       */
+/*   Updated: 2023/01/28 17:15:34 by bderya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,5 @@ void	ft_free(t_dB *db)
 	free(db->mlx);
 	ft_free_addr(db->addr);
 	free(db->line);
+	free(db->minimap);
 }
