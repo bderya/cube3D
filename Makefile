@@ -6,7 +6,7 @@
 #    By: bderya <bderya@student.42heilbronn.de>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/08 08:10:39 by yogun             #+#    #+#              #
-#    Updated: 2023/01/28 17:14:10 by bderya           ###   ########.fr        #
+#    Updated: 2023/01/28 18:16:34 by bderya           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,11 @@ LIBFTDIR = ./src/libft
 
 MLXDIR = ./mlx
 
-CC = gcc
+CC = cc
 
 RM = rm -f
 
-FLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 # COLORS
 Y = "\033[33m"
@@ -58,16 +58,26 @@ SRC =	cube3d.c \
 
 INCLIBFT = ./src/libft/libft.a 
 INCMLX = -L./mlx -lmlx
-
+LINK_FLAGS += -Lmlx -lmlx -framework OpenGL -framework AppKit
 OBJ = ${SRC:.c=.o}
 
-.c.o:
-	${CC} ${FLAGS} -c $< -o ${<:.c=.o}
+all: ${NAME}
+
+LSANLIB = /LeakSanitizer/liblsan.a
+lsan: CFLAGS += -ILeakSanitizer -Wno-gnu-include-next
+lsan: LINK_FLAGS += -LLeakSanitizer -llsan -lc++
+lsan: fclean $(LSANLIB)
+lsan: all
+
+$(LSANLIB): 
+	@if [ ! -d "LeakSanitizer" ]; then git clone git@github.com:bderya/LeakSanitizer.git; fi
+	$(MAKE) -C LeakSanitizer
+
 
 ${NAME}: ${OBJ}
-	@make -C $(LIBFTDIR)
-	@make -C $(MLXDIR)
-	@${CC} ${OBJ} ${INCLIBFT} ${INCMLX} -framework OpenGL -framework AppKit -o ${NAME}
+	make -C $(LIBFTDIR)
+	make -C $(MLXDIR) CFLAGS+="-Wno-deprecated -DSTRINGPUTX11 -O2"
+	${CC} ${OBJ} $(LINK_FLAGS) ${INCLIBFT} ${INCMLX} -framework OpenGL -framework AppKit -o ${NAME}
 	@echo $(B)
 	@echo "                       _|         _|_|_|     _|_|_|  "
 	@echo "   _|_|_|   _|    _|   _|_|_|           _|   _|    _|"
