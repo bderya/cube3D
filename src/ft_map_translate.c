@@ -60,6 +60,8 @@ int	ft_floorceiling_read_2(char *line, int j, t_dB *a)
 	int	i;
 
 	i = 0;
+	if(line[i] == ',') //I added here
+		ft_error("RGB format is invalid.\n", a);
 	while (line[i] && line[i] != ','
 		&& (ft_isdigit(line[i]) || line[i] == ' ' || line[i] == '\t'))
 		i++;
