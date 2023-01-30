@@ -6,16 +6,23 @@
 /*   By: bderya <bderya@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 08:05:48 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/28 17:12:22 by bderya           ###   ########.fr       */
+/*   Updated: 2023/01/30 12:33:34 by bderya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube3d.h"
-#include <stdbool.h>
+
 bool	check_if_exit(char *smth)
 {
-	if (access(ft_strtrim(smth, " "), R_OK) == -1)
+	char	*trimmed;
+
+	trimmed = ft_strtrim(smth, " ");
+	if (access(trimmed, R_OK) == -1)
+	{
+		free(trimmed);
 		return (false);
+	}
+	free(trimmed);
 	return (true);
 }
 

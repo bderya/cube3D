@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: bderya <bderya@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 15:46:02 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/17 17:49:03 by yogun            ###   ########.fr       */
+/*   Updated: 2023/01/30 12:21:39 by bderya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <fcntl.h>
 # include <math.h>
 # include <stdio.h>
+# include <stdbool.h>
 
 /*
 	depth:	Depth of field
