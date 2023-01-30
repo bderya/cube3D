@@ -6,7 +6,7 @@
 /*   By: bderya <bderya@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:15:48 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/30 16:16:02 by bderya           ###   ########.fr       */
+/*   Updated: 2023/01/30 18:34:45 by bderya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,7 @@ void	ft_free(t_dB *db)
 	free(db->we);
 	free(db->so);
 	free(db->ea);
+	free(db->door);
+	free(db->key);
+	free(db->key2);
 }
