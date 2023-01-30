@@ -6,7 +6,7 @@
 /*   By: bderya <bderya@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:15:48 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/28 17:15:34 by bderya           ###   ########.fr       */
+/*   Updated: 2023/01/30 16:16:02 by bderya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,8 @@ void	ft_free(t_dB *db)
 	ft_free_addr(db->addr);
 	free(db->line);
 	free(db->minimap);
+	free(db->no);
+	free(db->we);
+	free(db->so);
+	free(db->ea);
 }
