@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_map_process.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: bderya <bderya@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 15:26:42 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/23 11:32:19 by yogun            ###   ########.fr       */
+/*   Updated: 2023/01/30 19:42:22 by bderya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	fill_with_rows(t_dB *db)
 	while (db->map_height < 10)
 	{
 		i = 0;
-		tmp = malloc(db->map_width + 1);
+		tmp = (char *)malloc(db->map_width + 1);
 		while (i < db->map_width)
 		{
 			tmp[i] = ' ';
