@@ -55,21 +55,26 @@ void	ft_textures_read(t_dB *db, char *line, char c)
 	If in third value of RGB, there isn't a space, tab or new line it throws
 	an error.
 */
-int	ft_floorceiling_read_2(char *line, int j, t_dB *a)
+int	ft_floorceiling_read_2(char *line, int j, t_dB *db)
 {
 	int	i;
-
+	int x;
+	
 	i = 0;
 	if(line[i] == ',') //I added here
-		ft_error("RGB format is invalid.\n", a);
+		ft_error("RGB format is invalid.\n", db);
 	while (line[i] && line[i] != ','
-		&& (ft_isdigit(line[i]) || line[i] == ' ' || line[i] == '\t'))
-		i++;
+		&& ((x = ft_isdigit(line[i])) || line[i] == ' ' || line[i] == '\t'))
+		{
+			i++;
+			if(x == 0 && line[i] != ',')
+				ft_error("RGB format is invalid.\n", db);
+		}
 	if (j < 2 && line[i] != ',')
-		ft_error("RGB format is invalid.\n", a);
+		ft_error("RGB format is invalid.\n", db);
 	if (j == 2 && line[i] && line[i] != '\n'
 		&& line[i] != ' ' && line[i] != '\t')
-		ft_error("RGB format is invalid.\n", a);
+		ft_error("RGB format is invalid.\n", db);
 	return (i);
 }
 
