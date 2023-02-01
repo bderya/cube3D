@@ -61,20 +61,23 @@ int	ft_floorceiling_read_2(char *line, int j, t_dB *db)
 	int x;
 	
 	i = 0;
-	if(line[i] == ',') //I added here
+	x = 0;
+	while(line[i] == ' ' || line[i] == '\t')
+		i++;
+	if(line[i] == ',')
 		ft_error("RGB format is invalid.\n", db);
 	while (line[i] && line[i] != ','
-		&& ((x = ft_isdigit(line[i])) || line[i] == ' ' || line[i] == '\t'))
-		{
+		&& (x += ft_isdigit(line[i])))
 			i++;
-			if(x == 0 && line[i] != ',')
-				ft_error("RGB format is invalid.\n", db);
-		}
+	while(line[i] == ' ' || line[i] == '\t')
+		i++;
 	if (j < 2 && line[i] != ',')
 		ft_error("RGB format is invalid.\n", db);
 	if (j == 2 && line[i] && line[i] != '\n'
 		&& line[i] != ' ' && line[i] != '\t')
 		ft_error("RGB format is invalid.\n", db);
+	if (x != 2)
+		ft_error("RGB format is invalid.\n",db);
 	return (i);
 }
 
