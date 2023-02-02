@@ -6,7 +6,7 @@
 #    By: bderya <bderya@student.42heilbronn.de>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/08 08:10:39 by yogun             #+#    #+#              #
-#    Updated: 2023/01/28 18:22:06 by bderya           ###   ########.fr        #
+#    Updated: 2023/02/02 15:19:53 by bderya           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,22 +61,18 @@ INCMLX = -L./mlx -lmlx
 LINK_FLAGS += -Lmlx -lmlx -framework OpenGL -framework AppKit
 OBJ = ${SRC:.c=.o}
 
+path : 
+	@if [ ! -d "mlx" ]; then git clone https://github.com/bderya/mlx.git mlx; fi
+	@make -C ./ all
+
 all: ${NAME}
 
-LSANLIB = /LeakSanitizer/liblsan.a
-lsan: CFLAGS += -ILeakSanitizer -Wno-gnu-include-next
-lsan: LINK_FLAGS += -LLeakSanitizer -llsan -lc++
-lsan: fclean $(LSANLIB)
-lsan: all
-
-$(LSANLIB): 
-	@if [ ! -d "LeakSanitizer" ]; then git clone https://github.com/bderya/LeakSanitizer.git; fi
-	$(MAKE) -C LeakSanitizer
-
+%.o: %.c
+	cc $(CFLAGS) -o $@ -c $<
 
 ${NAME}: ${OBJ}
-	make -C $(LIBFTDIR)
-	make -C $(MLXDIR) CFLAGS+="-Wno-deprecated -DSTRINGPUTX11 -O2"
+	@make -C $(LIBFTDIR)
+	@make -C $(MLXDIR) CFLAGS+="-Wno-deprecated -DSTRINGPUTX11 -O2"
 	${CC} ${OBJ} $(LINK_FLAGS) ${INCLIBFT} ${INCMLX} -framework OpenGL -framework AppKit -o ${NAME}
 	@echo $(B)
 	@echo "                       _|         _|_|_|     _|_|_|  "
@@ -86,9 +82,8 @@ ${NAME}: ${OBJ}
 	@echo "   _|_|_|     _|_|_|   _|_|_|     _|_|_|     _|_|_|  "
 	@echo $(X)
 
-all: ${NAME}
-
 bonus: all
+
 
 clean:
 	${RM} ${OBJ} ${DEP}

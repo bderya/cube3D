@@ -6,7 +6,7 @@
 /*   By: bderya <bderya@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 08:05:48 by yogun             #+#    #+#             */
-/*   Updated: 2023/01/30 18:46:59 by bderya           ###   ########.fr       */
+/*   Updated: 2023/02/02 15:26:37 by bderya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,26 +58,29 @@ void	ft_textures_read(t_dB *db, char *line, char c)
 int	ft_floorceiling_read_2(char *line, int j, t_dB *db)
 {
 	int	i;
-	int x;
-	
+	int	x;
+
 	i = 0;
 	x = 0;
-	while(line[i] == ' ' || line[i] == '\t')
+	while (line[i] == ' ' || line[i] == '\t')
 		i++;
-	if(line[i] == ',')
+	if (line[i] == ',')
 		ft_error("RGB format is invalid.\n", db);
 	while (line[i] && line[i] != ','
-		&& (x += ft_isdigit(line[i])))
-			i++;
-	while(line[i] == ' ' || line[i] == '\t')
+		&& (ft_isdigit(line[i])))
+	{
+		i++;
+		x++;
+	}
+	while (line[i] == ' ' || line[i] == '\t')
 		i++;
 	if (j < 2 && line[i] != ',')
 		ft_error("RGB format is invalid.\n", db);
 	if (j == 2 && line[i] && line[i] != '\n'
 		&& line[i] != ' ' && line[i] != '\t')
 		ft_error("RGB format is invalid.\n", db);
-	if (x != 2)
-		ft_error("RGB format is invalid.\n",db);
+	if (x < 1)
+		ft_error("RGB format is invalid.\n", db);
 	return (i);
 }
 
